@@ -1,0 +1,49 @@
+<?php
+
+//déclaration du tableau 
+$notes = array(
+  "Ali" => array(
+    "PHP" => array("tp" => 12, "ds" => 15, "examen" => 17),
+    "REACT" => array("tp" => 14, "ds" => 16, "examen" => 13),
+    "NODEJS" => array("tp" => 16, "ds" => 18, "examen" => 19),
+    "JAVA" => array("tp" => 15, "ds" => 14, "examen" => 16)
+  ),
+  "Sami" => array(
+    "PHP" => array("tp" => 13, "ds" => 16, "examen" => 18),
+    "REACT" => array("tp" => 12, "ds" => 14, "examen" => 12),
+    "NODEJS" => array("tp" => 14, "ds" => 15, "examen" => 17),
+    "JAVA" => array("tp" => 17, "ds" => 18, "examen" => 19)
+  ),
+  "Mohamed" => array(
+    "PHP" => array("tp" => 14, "ds" => 17, "examen" => 15),
+    "REACT" => array("tp" => 18, "ds" => 19, "examen" => 17),
+    "NODEJS" => array("tp" => 12, "ds" => 14, "examen" => 16),
+    "JAVA" => array("tp" => 13, "ds" => 15, "examen" => 18)
+  ),
+  "Omar" => array(
+    "PHP" => array("tp" => 16, "ds" => 18, "examen" => 17),
+    "REACT" => array("tp" => 15, "ds" => 15, "examen" => 16),
+    "NODEJS" => array("tp" => 17, "ds" => 19, "examen" => 18),
+    "JAVA" => array("tp" => 18, "ds" => 17, "examen" => 15)
+  )
+);
+
+foreach ($notes as $etudiant => $matieres) {
+  echo "<h2>Bulletin de notes de $etudiant</h2>";
+  echo "<table border='1' width='400px' class="u-table-entity">";
+  echo "<tr><th>Matière</th><th>TP</th><th>DS</th><th>Examen</th><th>Moyenne</th></tr>";
+  $total_moyennes = 0;
+  $nb_matieres = 0;
+  foreach ($matieres as $matiere => $notes) {
+    $moyenne_matiere = ($notes['tp'] + $notes['ds'] + ($notes['examen'] * 2))/4;
+    echo "<tr><td>$matiere</td><td>{$notes['tp']}</td><td>{$notes['ds']}</td><td>{$notes['examen']}</td><td>$moyenne_matiere</td></tr>";
+    $total_moyennes += $moyenne_matiere;
+    $nb_matieres++;
+  }
+  $moyenne_generale = $total_moyennes / $nb_matieres;
+  echo "<tr><td colspan='5'>la moyenne général : $moyenne_generale</td></tr>";
+  echo "</table>";
+  echo "<br>";
+  echo "<br>";
+}
+    ?>
